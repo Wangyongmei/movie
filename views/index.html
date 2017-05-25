@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html ng-app="movie">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title></title>
+</head>
+
+
+<link href="/stylesheets/bootstrap.css" rel="stylesheet"/>
+<script src="/javascripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<link href="/stylesheets/common.css" rel="stylesheet"/>
+
+<style>
+
+    @media (min-width: 1200px) {
+        #tab_movie{display:none;}
+    }
+
+    @media(max-width:1044px){
+        .app_download{display: none;}
+        .search_form{display: none;}
+        .user_login{display: none;}
+    }
+
+    @media (max-width:1200px){
+        .rightside {
+
+            display: none;
+
+
+
+        }
+
+        .movie_list dd:not(:nth-child(5n)) {
+            margin-right: 20px; }
+
+        .movie_list{
+            width: 1000px;
+        }
+
+        .main_panel_header{
+            width: 850px;
+        }
+        #tab_movie{display:none;}
+
+    }
+
+    @media (max-width:992px) {
+        .movie_list{
+            width:740px;
+        }
+        .main_panel_header{
+            width: 740px;
+        }
+
+        #tab_movie{display: none;}
+
+    }
+
+    @media (max-width:876px) {
+
+        .content{
+            display: none;
+
+        }
+        .content2{
+            display: none;
+        }
+        .banner{
+            display: none;
+        }
+        .head{display: none;}
+        .foot{
+            display: none;
+        }
+        .movielist li div{
+            float: left;
+        }
+        #tab_movie{display: block;}
+
+
+    }
+
+    .navbar a{text-decoration: none;}
+
+
+
+
+</style>
+
+<script>
+    document.getElementsByTagName("html")[0].style.fontSize=document.documentElement.clientWidth/3+"px";
+</script>
+<body>
+<div class="headphone" style="height:60px;background:#ef4238;position:fixed;top:0;left:0;width:100%;z-index: 999;
+">
+    <div style="width:40%;float: left;font-size:20px;color:#ffffff;margin-left:30%;height:60px;text-align: center;line-height: 60px;">电影</div>
+    <div class="" style="float:right;right:20px;position:absolute;height: 60px;line-height: 60px;">
+        <img src="/images/more.png" style="width:35px;">
+    </div>
+</div>
+<div class="head">
+    <div class="inner">
+        <a href="#" class="logo"></a>
+        <div class="city">
+            <div class="city_name">
+                北京<span class="triangle_box"><span class="triangle"></span></span>
+            </div>
+        </div>
+        <div class="nav">
+            <ul class="navbar">
+                <li><a class="active">首页</a></li>
+                <li><a href="movie">电影</a></li>
+                <li><a href="box">榜单</a></li>
+            </ul>
+        </div>
+
+        <!--<div class="user_info">-->
+            <!--<div class="user_login">-->
+                <!--<img src="./images/user.png"/>-->
+                <!--<span class="triangle_box"><span class="triangle"></span></span>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<form class="search_form">-->
+            <!--<input type="search" class="search" placeholder="找影视剧、影人、影院"/>-->
+            <!--<input type="submit" class="submit" value=""/>-->
+        <!--</form>-->
+
+        <!--<div class="app_download">-->
+            <!--<a>-->
+                <!--<span class="phone_icon"></span>-->
+                <!--<span class="down_text">APP下载</span>-->
+            <!--</a>-->
+        <!--</div>-->
+    </div>
+</div>
+
+<div class="banner">
+    <ul class="banner_ul">
+        <li>
+
+            <!-- <a href="#" style="display: block;"><image src="images/banner02.jpg"></image></a> -->
+        </li>
+    </ul>
+    <ol class="banner_ol">
+        <li>
+            <a class="active"></a>
+        </li>
+        <li>
+            <a ></a>
+        </li>
+        <li>
+            <a ></a>
+        </li>
+        <li>
+            <a></a>
+        </li>
+        <li>
+            <a></a>
+        </li>
+    </ol>
+</div>
+
+
+
+
+<div class="">
+    <div class="content container" style="top:80px; height:600px;">
+        <div class="col-lg-4 rightside" style="float:right;">
+            <div class="aside_box">
+                <div class="panel">
+                    <div class="panel_header">
+                        <span>今日票房</span>
+                    </div>
+                    <div class="panel_content">
+
+                        <ul class="ranking-wrapper ranking-box">
+                            <li class="ranking-top ranking-index-1">
+                                <a href="#" target="_blank">
+                                    <div class="ranking-top-left">
+                                        <img class="ranking-img" src="http://p0.meituan.net/movie/ad44a6f55fe06a36a80af9a8e8e9527c79138.jpg.webp@120w_80h_1e_1c">
+                                    </div>
+                                    <div class="ranking-top-right">
+                                        <div class="ranking-top-right-main">
+                                            <span class="ranking-top-moive-name">速度与激情8</span>
+
+
+                                            <p class="ranking-top-wish">
+                                                <span class="stonefont">3605.85</span>万
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="ranking-item">
+                                <a href="#">
+                                    <span class="normal-link">
+                                          <i class="ranking-index ranking-index-2">2</i>
+                                          <span class="ranking-movie-name">记忆大师</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">2845.35</span>万
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+                            <li class="ranking-item">
+                                <a href="#" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index ranking-index-3">3</i>
+                                          <span class="ranking-movie-name">拆弹·专家</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">2791.65</span>万
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+
+                            <li class="ranking-item">
+                                <a href="#" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index">4</i>
+                                          <span class="ranking-movie-name">喜欢·你</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">2045.56</span>万
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+                            <li class="ranking-item">
+                                <a href="/films/338436" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index">5</i>
+                                          <span class="ranking-movie-name">春娇救志明</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">298.56</span>万
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+                            <li class="ranking-item">
+                                <a href="#" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index">6</i>
+                                          <span class="ranking-movie-name">蓝精灵：寻找神秘村</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">943.57</span>万
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+
+                            <li class="ranking-item">
+                                <a href="#" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index">7</i>
+                                          <span class="ranking-movie-name">傲娇与偏见</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">1424.78</span>万
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+
+                            <li class="ranking-item">
+                                <a href="#" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index">8</i>
+                                          <span class="ranking-movie-name">灵狼传奇</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">1200.34</span>万
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+                            <li class="ranking-item">
+                                <a href="#" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index">9</i>
+                                          <span class="ranking-movie-name">雪狼犬</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">340.67</span>万
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+                            <li class="ranking-item">
+                                <a href="#" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index">10</i>
+                                          <span class="ranking-movie-name">大话西游之大圣取亲</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">26.82</span>万
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+
+
+                        <div class="notes">
+                            <div class="notes_panel">
+                                <div class="notes_title">
+
+                                </div>
+                                <div class="notes_detail"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-8">
+            <div class="col-lg-12">
+                <div class="main_panel_header">
+                    <sapn class="header_left"><a>正在热映</a></sapn>
+                    <sapn class="header_right"><a href="movie">全部></a></sapn>
+                </div>
+                <div class="main_panel_content" >
+                    <dl class="movie_list" ng-controller="intheatersController">
+                        <dd ng-repeat="intheater in intheaters | limitTo: 8">
+                            <div class="moive_item">
+                                <a href="">
+                                    <div class="movie_poster">
+                                        <div style="height: 220px; overflow: hidden;"><img src="{{intheater.poster}}"></div>
+                                        
+                                        <div class="movie_bg" style="">
+                                            <div class="movie_detail">
+                                                <span class="movie_socre">{{intheater.grade}}</span>
+                                                <span class="movie_name">{{intheater.movie_name}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="movie_sale">
+                                        <span ng-click="opendetail($index)">查看</span>
+                                    </div>
+
+                                </a>
+
+                            </div>
+                        </dd>
+
+                        <!--<dd>-->
+                            <!--<div class="moive_item">-->
+                                <!--<a href="#">-->
+                                    <!--<div class="movie_poster">-->
+                                        <!--<img src="images/hot_movie01.jpeg">-->
+                                        <!--<div class="movie_bg">-->
+                                            <!--<div class="movie_detail">-->
+                                                <!--<span class="movie_socre">7.8</span>-->
+                                                <!--<span class="movie_name">极限特工</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="movie_sale">-->
+                                        <!--<span>查看</span>-->
+                                    <!--</div>-->
+
+                                <!--</a>-->
+
+                            <!--</div>-->
+                        <!--</dd>-->
+
+                        <!--<dd>-->
+                            <!--<div class="moive_item">-->
+                                <!--<a href="#">-->
+                                    <!--<div class="movie_poster">-->
+                                        <!--<img src="images/hot_movie01.jpeg">-->
+                                        <!--<div class="movie_bg">-->
+                                            <!--<div class="movie_detail">-->
+                                                <!--<span class="movie_socre">7.8</span>-->
+                                                <!--<span class="movie_name">极限特工</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="movie_sale">-->
+                                        <!--<span>查看</span>-->
+                                    <!--</div>-->
+
+                                <!--</a>-->
+
+                            <!--</div>-->
+                        <!--</dd>-->
+                        <!--<dd>-->
+                            <!--<div class="moive_item">-->
+                                <!--<a href="#">-->
+                                    <!--<div class="movie_poster">-->
+                                        <!--<img src="images/hot_movie01.jpeg">-->
+                                        <!--<div class="movie_bg">-->
+                                            <!--<div class="movie_detail">-->
+                                                <!--<span class="movie_socre">7.8</span>-->
+                                                <!--<span class="movie_name">极限特工</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="movie_sale">-->
+                                        <!--<span>查看</span>-->
+                                    <!--</div>-->
+
+                                <!--</a>-->
+
+                            <!--</div>-->
+                        <!--</dd>-->
+                        <!--<dd>-->
+                            <!--<div class="moive_item">-->
+                                <!--<a href="#">-->
+                                    <!--<div class="movie_poster">-->
+                                        <!--<img src="images/hot_movie01.jpeg">-->
+                                        <!--<div class="movie_bg">-->
+                                            <!--<div class="movie_detail">-->
+                                                <!--<span class="movie_socre">7.8</span>-->
+                                                <!--<span class="movie_name">极限特工</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="movie_sale">-->
+                                        <!--<span>查看</span>-->
+                                    <!--</div>-->
+
+                                <!--</a>-->
+
+                            <!--</div>-->
+                        <!--</dd>-->
+                        <!--<dd>-->
+                            <!--<div class="moive_item">-->
+                                <!--<a href="#">-->
+                                    <!--<div class="movie_poster">-->
+                                        <!--<img src="images/hot_movie01.jpeg">-->
+                                        <!--<div class="movie_bg">-->
+                                            <!--<div class="movie_detail">-->
+                                                <!--<span class="movie_socre">7.8</span>-->
+                                                <!--<span class="movie_name">极限特工</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="movie_sale">-->
+                                        <!--<span>查看</span>-->
+                                    <!--</div>-->
+
+                                <!--</a>-->
+
+                            <!--</div>-->
+                        <!--</dd>-->
+                        <!--<dd>-->
+                            <!--<div class="moive_item">-->
+                                <!--<a href="#">-->
+                                    <!--<div class="movie_poster">-->
+                                        <!--<img src="images/hot_movie01.jpeg">-->
+                                        <!--<div class="movie_bg">-->
+                                            <!--<div class="movie_detail">-->
+                                                <!--<span class="movie_socre">7.8</span>-->
+                                                <!--<span class="movie_name">极限特工</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="movie_sale">-->
+                                        <!--<span>查看</span>-->
+                                    <!--</div>-->
+
+                                <!--</a>-->
+
+                            <!--</div>-->
+                        <!--</dd>-->
+                        <!--<dd>-->
+                            <!--<div class="moive_item">-->
+                                <!--<a href="#">-->
+                                    <!--<div class="movie_poster">-->
+                                        <!--<img src="images/hot_movie01.jpeg">-->
+                                        <!--<div class="movie_bg">-->
+                                            <!--<div class="movie_detail">-->
+                                                <!--<span class="movie_socre">7.8</span>-->
+                                                <!--<span class="movie_name">极限特工</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="movie_sale">-->
+                                        <!--<span>查看</span>-->
+                                    <!--</div>-->
+
+                                <!--</a>-->
+
+                            <!--</div>-->
+                        <!--</dd>-->
+
+                    </dl>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="clear"></div>
+
+    <div class="content2 container" style="top:60px;margin-bottom:100px;height:600px;">
+        <div class="col-lg-4 rightside" style="float:right;">
+            <div class="aside_box">
+                <div class="panel">
+                    <div class="panel_header">
+                        <span>最受期待</span>
+                    </div>
+                    <div class="panel_content">
+
+                        <ul class="ranking-wrapper ranking-box">
+                            <li class="ranking-top ranking-index-1">
+                                <a href="#" target="_blank">
+                                    <div class="ranking-top-left">
+                                        <img class="ranking-img" src="http://p0.meituan.net/movie/ad44a6f55fe06a36a80af9a8e8e9527c79138.jpg.webp@120w_80h_1e_1c">
+                                    </div>
+                                    <div class="ranking-top-right">
+                                        <div class="ranking-top-right-main">
+                                            <span class="ranking-top-moive-name">变形金刚5：最后的骑士</span>
+
+
+                                            <p class="ranking-top-wish">
+                                                <span class="stonefont">164044</span>人想看
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="ranking-item">
+                                <a href="#">
+                                    <span class="normal-link">
+                                          <i class="ranking-index ranking-index-2">2</i>
+                                          <span class="ranking-movie-name">加勒比海盗5</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">395958</span>人想看
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+                            <li class="ranking-item">
+                                <a href="#" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index ranking-index-3">3</i>
+                                          <span class="ranking-movie-name">三生三世十里桃花</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">327924</span>人想看
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+
+                            <li class="ranking-item">
+                                <a href="#" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index">4</i>
+                                          <span class="ranking-movie-name">神奇女侠</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">52789</span>人想看
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+                            <li class="ranking-item">
+                                <a href="/films/338436" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index">5</i>
+                                          <span class="ranking-movie-name">异形契约</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">52581</span>人想看
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+                            <li class="ranking-item">
+                                <a href="#" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index">6</i>
+                                          <span class="ranking-movie-name">战狼2</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">93763</span>人想看
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+
+                            <li class="ranking-item">
+                                <a href="#" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index">7</i>
+                                          <span class="ranking-movie-name">悟空传</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">45682</span>人想看
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+
+                            <li class="ranking-item">
+                                <a href="#" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index">8</i>
+                                          <span class="ranking-movie-name">超凡战队</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">41839</span>人想看
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+                            <li class="ranking-item">
+                                <a href="#" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index">9</i>
+                                          <span class="ranking-movie-name">终结者2：审判日</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">70517</span>人想看
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+                            <li class="ranking-item">
+                                <a href="#" target="_blank" data-act="ticketList-movie-click">
+                                    <span class="normal-link">
+                                          <i class="ranking-index">10</i>
+                                          <span class="ranking-movie-name">亚瑟王：斗兽争霸</span>
+
+                                         <span class="ranking-num-info">
+                                               <span class="stonefont">22291</span>人想看
+                                         </span>
+                                     </span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+
+
+                        <div class="notes">
+                            <div class="notes_panel">
+                                <div class="notes_title">
+                                    <span>今日大盘</span>
+                                </div>
+                                <div class="notes_detail"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-8">
+            <div class="main_panel">
+                <div class="main_panel_header">
+                    <sapn class="header_left"><a>即将上映</a></sapn>
+                    <sapn class="header_right"><a href="movie">全部></a></sapn>
+                </div>
+                <div class="main_panel_content">
+                    <dl class="movie_list" ng-controller="comingController">
+                        <dd ng-repeat="coming in comings | limitTo: 8">
+                            <div class="moive_item">
+                                <a href="#">
+                                    <div class="movie_poster">
+                                        <div style="height:220px; overflow: hidden;"> <img src="{{coming.poster}}"></div>
+                                       
+                                        <div class="movie_bg">
+                                            <div class="movie_detail">
+                                                <span class="movie_socre">{{coming.grade}}</span>
+                                                <span class="movie_name">{{coming.movie_name}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="movie_sale">
+                                        <span ng-click="opendetail($index)">{{coming.date}}</span>
+                                    </div>
+
+                                </a>
+
+                            </div>
+                        </dd>
+
+                        <!--<dd>-->
+                            <!--<div class="moive_item">-->
+                                <!--<a href="#">-->
+                                    <!--<div class="movie_poster">-->
+                                        <!--<img src="images/hot_movie01.jpeg">-->
+                                        <!--<div class="movie_bg">-->
+                                            <!--<div class="movie_detail">-->
+                                                <!--<span class="movie_socre">7.8</span>-->
+                                                <!--<span class="movie_name">极限特工</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="movie_sale">-->
+                                        <!--<span>3月24日上映</span>-->
+                                    <!--</div>-->
+
+                                <!--</a>-->
+
+                            <!--</div>-->
+                        <!--</dd>-->
+
+                        <!--<dd>-->
+                            <!--<div class="moive_item">-->
+                                <!--<a href="#">-->
+                                    <!--<div class="movie_poster">-->
+                                        <!--<img src="images/hot_movie01.jpeg">-->
+                                        <!--<div class="movie_bg">-->
+                                            <!--<div class="movie_detail">-->
+                                                <!--<span class="movie_socre">7.8</span>-->
+                                                <!--<span class="movie_name">极限特工</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="movie_sale">-->
+                                        <!--<span>3月24日上映</span>-->
+                                    <!--</div>-->
+
+                                <!--</a>-->
+
+                            <!--</div>-->
+                        <!--</dd>-->
+                        <!--<dd>-->
+                            <!--<div class="moive_item">-->
+                                <!--<a href="#">-->
+                                    <!--<div class="movie_poster">-->
+                                        <!--<img src="images/hot_movie01.jpeg">-->
+                                        <!--<div class="movie_bg">-->
+                                            <!--<div class="movie_detail">-->
+                                                <!--<span class="movie_socre">7.8</span>-->
+                                                <!--<span class="movie_name">极限特工</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="movie_sale">-->
+                                        <!--<span>3月24日上映</span>-->
+                                    <!--</div>-->
+
+                                <!--</a>-->
+
+                            <!--</div>-->
+                        <!--</dd>-->
+                        <!--<dd>-->
+                            <!--<div class="moive_item">-->
+                                <!--<a href="#">-->
+                                    <!--<div class="movie_poster">-->
+                                        <!--<img src="images/hot_movie01.jpeg">-->
+                                        <!--<div class="movie_bg">-->
+                                            <!--<div class="movie_detail">-->
+                                                <!--<span class="movie_socre">7.8</span>-->
+                                                <!--<span class="movie_name">极限特工</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="movie_sale">-->
+                                        <!--<span>3月24日上映</span>-->
+                                    <!--</div>-->
+
+                                <!--</a>-->
+
+                            <!--</div>-->
+                        <!--</dd>-->
+                        <!--<dd>-->
+                            <!--<div class="moive_item">-->
+                                <!--<a href="#">-->
+                                    <!--<div class="movie_poster">-->
+                                        <!--<img src="images/hot_movie01.jpeg">-->
+                                        <!--<div class="movie_bg">-->
+                                            <!--<div class="movie_detail">-->
+                                                <!--<span class="movie_socre">7.8</span>-->
+                                                <!--<span class="movie_name">极限特工</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="movie_sale">-->
+                                        <!--<span>3月24日上映</span>-->
+                                    <!--</div>-->
+
+                                <!--</a>-->
+
+                            <!--</div>-->
+                        <!--</dd>-->
+                        <!--<dd>-->
+                            <!--<div class="moive_item">-->
+                                <!--<a href="#">-->
+                                    <!--<div class="movie_poster">-->
+                                        <!--<img src="images/hot_movie01.jpeg">-->
+                                        <!--<div class="movie_bg">-->
+                                            <!--<div class="movie_detail">-->
+                                                <!--<span class="movie_socre">7.8</span>-->
+                                                <!--<span class="movie_name">极限特工</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="movie_sale">-->
+                                        <!--<span>3月24日上映</span>-->
+                                    <!--</div>-->
+
+                                <!--</a>-->
+
+                            <!--</div>-->
+                        <!--</dd>-->
+                        <!--<dd>-->
+                            <!--<div class="moive_item">-->
+                                <!--<a href="#">-->
+                                    <!--<div class="movie_poster">-->
+                                        <!--<img src="images/hot_movie01.jpeg">-->
+                                        <!--<div class="movie_bg">-->
+                                            <!--<div class="movie_detail">-->
+                                                <!--<span class="movie_socre">7.8</span>-->
+                                                <!--<span class="movie_name">极限特工</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="movie_sale">-->
+                                        <!--<span>3月24日上映</span>-->
+                                    <!--</div>-->
+
+                                <!--</a>-->
+
+                            <!--</div>-->
+                        <!--</dd>-->
+                    </dl>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="clear"></div>
+
+
+
+    <div id="tab_movie" style="height: 100%;margin-top:60px;">
+            <ul style="height: 100%;" ng-controller="movielist">
+              <li ng-repeat="movie in movies" style="height:150px;width:100%;padding:10px;position: relative;border-bottom:2px solid #f0f0f0;" >
+                  <div style="height:120px;width:100px;display:inline-block;">
+                      <img src="{{movie.poster}}" style="height:120px;display:block"/>
+                  </div>
+                  <div style="width:40%;display:inline-block;height: 120px;position:absolute;top:30px;">
+                      <p style="margin:0;overflow: hidden;font-size:18px; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">{{movie.movie_name}}</p>
+                      <p style="width:150px;height:20px; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;
+}">类别：{{movie.type}}</p>
+                      <p style="height:20px;overflow: hidden">导演：{{movie.director}}</p>
+
+                  </div>
+                  <div style="width:10%;padding-top:50px;position:absolute;right:0;display: inline-block;">
+
+                    <input type="button" value="查看" style="background: none;border:none;" ng-click="opendetail($index)"/>
+                  </div>
+
+              </li>
+                <div class="clear"></div>
+
+
+
+
+            </ul>
+
+        </div>
+
+
+
+
+</div>
+
+
+<div class="foot" style="width:100%;height: 120px;background: #000;"></div>
+
+
+
+<script language="JavaScript" src="/javascripts/jquery-2.2.2.js"></script>
+<script language="JavaScript" src="/javascripts/index.js"></script>
+<script language="JavaScript" src="/javascripts/angular.js"></script>
+<script language="JavaScript" src="/javascripts/intheatersController.js"></script>
+<script language="javascript" src="/javascripts/angulat-route.js"></script>
+<script language="javascript" src="/javascripts/App.js"></script>
+<script language="JavaScript">
+    function opendetails(index){
+        console.log(index);
+    }
+
+    $.ajax({
+        type:'GET',
+        url:'/api/intheaters',
+        success:function(data){
+            for(var i=0;i<8;i++){}
+        }
+    })
+</script>
+</body>
+</html>

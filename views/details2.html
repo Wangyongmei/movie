@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html ng-app="detail">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0 ;font-family: Microsoft YaHei,Helvetica,Arial,sans-serif;}
+        div .moviehead{width:100%;height: 250px;background-image: url("/images/detail_bg.png");padding-left:10%;padding-right:10%;
+            box-sizing: border-box;position: relative;
+        }
+        .clear{clear: both;}
+        .herald_img{width:150px;overflow:hidden;float: left;top:50px;position: relative}
+        .herald_img img{max-width:150px;vertical-align: inherit;border: 3px solid #fff;box-sizing: border-box;}
+        .movie-brief-container{margin-left:200px;position: relative;top:70px;}
+        .movie-brief-container h3{color: #fff;height: 40px;line-height: 40px;}
+        .movie-brief-container ul{}
+        .movie-brief-container li{
+            list-style-type: none;height:20px; line-height:20px;font-size: 14px;color: #fff;width:200px;overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;}
+        .movie-stats-container{margin-left:450px;color: #fff;}
+        .moviecontent{margin-top:50px;width: 100%;padding-left: 10%;padding-right: 10%;box-sizing: border-box;}
+        .content_info{width:90%;margin:20px auto;text-indent: 2em;}
+        .imageslist{width:90%;margin:20px auto;}
+        .imageslist1{float: left;width:50%;}
+        .imageslist1 img{width:100%;}
+        .imageslist2{width:48%;float: right;margin-left:2%;}
+        .imageslist2 img{width:100px;height:100px;}
+        .comment-list-container ul li{list-style: none;border-bottom:1px solid #777777;padding-bottom:20px;
+            padding-top:20px;}
+        .comment-list-container{width:100%;}
+        .mod-content{width:90%;margin:20px auto;}
+
+    </style>
+</head>
+
+<body>
+<div class="detailbox" ng-controller="detailController">
+
+    <div class="moviehead">
+        <div class="herald_img">
+            <img src="{{intheaters.poster}}">
+        </div>
+        <div class="movie-brief-container">
+            <h3 class="name">{{intheaters.movie_name}}</h3>
+
+            <ul>
+                <li class="ellipsis">{{intheaters.type}}</li>
+                <li class="ellipsis">
+                    {{intheaters.length}}
+                </li>
+                <li class="ellipsis actor"></li>
+                <li class="ellipsis">{{intheaters.date}}</li>
+            </ul>
+        </div>
+        <div class="movie-stats-container">
+
+            <div class="movie-index">
+                <p class="movie-index-title">用户评分</p>
+                <div class="movie-index-content score normal-score">
+              <span class="index-left info-num">
+                <span style="color: #ffc600;font-size: 30px;">{{intheaters.grade}}</span>
+              </span>
+                    <div class="index-right">
+                        <div class="star-wrapper">
+                            <div class="star-on" style="width:91%;"></div>
+                        </div>
+                        <span class="score-num"><span class="stonefont">{{intheaters.comment_amount}}</span>人评分</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="moviecontent">
+        <div class="content1">
+            <div>
+                <h3>剧情介绍</h3>
+                <div>
+                    <p class="content_info">{{intheaters.introduction}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="content2">
+            <div>
+                <h3>剧照</h3>
+                <div class="imageslist">
+
+                    <div class="imageslist1">
+                        <img src="{{intheaters.imagelist[0]}}"/></div>
+
+                    <div class="imageslist2">
+                        <img src="{{intheaters.imagelist[1]}}"/>
+                        <img src="{{intheaters.imagelist[2]}}"/>
+                        <img src="{{intheaters.imagelist[3]}}"/>
+                        <img src="{{intheaters.imagelist[4]}}"/>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="module">
+            <div class="mod-title">
+                <h3>热门短评</h3>
+            </div>
+            <div class="mod-content">
+                <div class="comment-list-container" data-hot="10">
+
+                    <ul ng-repeat="commentlist in intheaters.commentlist">
+                        <li class="comment-container " data-val="{commentid:105091743}">
+                            <div class="main">
+                                <div class="main-header clearfix">
+                                    <div class="user">
+                                        <span>评论人：</span><span class="name">{{commentlist.people}}</span>
+                                    </div>
+
+                                </div>
+                                <div class="comment-content"><span>评论内容：</span>{{commentlist.content}}</div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script language="JavaScript" src="/javascripts/jquery-2.2.2.js"></script>
+<script language="JavaScript" src="/javascripts/angular.js"></script>
+<script language="JavaScript" src="/javascripts/details.js"></script>
+
+<script>
+    var app=angular.module('detail',[]);
+
+    app.config(['$locationProvider', function ($locationProvider) {
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
+    }]);
+
+    app.controller('detailController',function($scope,$location,$http){
+
+
+        $scope.get1 = function(){
+
+            var str=$location.$$url;
+            var index=str.split('=')[1];
+            $http({
+                method: 'GET',
+                url: 'http://localhost:3000/api/coming'
+            }).then(function successCallback(response) {
+                $scope.intheaters=response.data[index];
+                console.log( $scope.intheaters);
+                var actor=$scope.intheaters.actor.split('/');
+                $('.actor')[0].innerHTML=actor[0]+'/'+actor[1]+'/'+actor[2]+'/'+actor[3];
+
+            }, function errorCallback(response) {
+                console.log('请求失败');
+            });
+
+
+        }();
+
+
+
+
+    })
+</script>
+</body>
+</html>
